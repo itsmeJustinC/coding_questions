@@ -3,7 +3,7 @@
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{{ url 'user-posts' object.author.username }}">{{ object.author }}</a>
+            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
             <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
             {% if object.author == user %}
                 <div>
@@ -14,6 +14,20 @@
         </div>
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content }}</p>
-        </div>
+        <a href="{% url 'comment-create' object.id %}"><button class="btn btn-sm btn-outline-primary">Comment</button></a>
+        <hr>
+        <div class="">
+            {% for comment in object.comment_set.all %}
+                <div class="mb-3">
+                    <h5 class="float-left mb-0 font-weight-semi-bold">{{ comment.author }}</h5> 
+                    <div>
+                        <a href="{% url 'comment-update' comment.pk %}" class="ml-2"><small>Edit</small></a>
+                        <a href="" class="ml-2"><small>Delete</small></a>
+                    </div>
+                    <small class="ml-2">{{ comment.content }}</small>
+                </div>
+            {% endfor %}
+        </div>    
+    </div>
     </article>
 {% endblock content %}

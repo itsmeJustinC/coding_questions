@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'codingquestions.herokuapp.com',
+    'localhost',
 ]
 
 
