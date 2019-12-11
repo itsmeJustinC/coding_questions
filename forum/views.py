@@ -85,7 +85,7 @@ class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.post = get_object_or_404(Post, pk=1)
+        form.instance.post = get_object_or_404(Post, pk=self.object.post.pk)
         return super().form_valid(form)        
 
     def test_func(self):
