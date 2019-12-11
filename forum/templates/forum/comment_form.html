@@ -6,7 +6,7 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Post a comment</legend>
-                <small>{{ object.title }}</small>
+                <h3>{{ object.post.title }}</h3>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
