@@ -11,6 +11,30 @@
 				<h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
 				<p class="article-content">{{ post.content }}</p>
 			</div>
+			<a href="{% url 'comment-create' object.id %}"><button class="btn btn-sm btn-outline-primary">Comment</button></a>
+			<small class="text-muted">{{ object.comment_set.count }} Comments</small>
+			<hr>
+			<div class="">
+				{% for comment in object.comment_set.all %}
+					{% if comment.author == user %}
+						<div class="mb-3">
+							<h5 class="float-left mb-0 font-weight-semi-bold">{{ comment.author }}</h5> 
+							<div>
+								{% if comment.author == user %}
+									<a href="{% url 'comment-update' comment.pk %}" class="ml-2"><small>Edit</small></a>
+									<a href="{% url 'comment-delete' comment.pk %}" class="ml-2"><small>Delete</small></a>
+								{% endif %}
+							</div>
+							<small class="ml-2">{{ comment.content }}</small>
+						</div>
+					{% else %}
+						<div class="mb-3">
+							<h5 class="mb-0 font-weight-semi-bold">{{ comment.author }}</h5>
+							<small class="ml-2">{{ comment.content }}</small>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
 		</article>
 	{% endfor %}
     {% if is_paginated %}
