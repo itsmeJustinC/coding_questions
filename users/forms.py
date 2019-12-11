@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
+    username = forms.CharField(max_length=25)
+
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
