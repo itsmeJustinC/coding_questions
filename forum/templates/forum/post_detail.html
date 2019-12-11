@@ -12,8 +12,8 @@
                 </div>
             {% endif %}
         </div>
-        <h2 class="article-title">{{ object.title }}</h2>
-        <p class="article-content">{{ object.content|wordwrap:110 }}</p>
+        <h2 class="wrap article-title">{{ object.title }}</h2>
+        <p class="wrap article-content">{{ object.content|wordwrap:110 }}</p>
         <a href="{% url 'comment-create' object.id %}"><button class="btn btn-sm btn-outline-primary">Comment</button></a>
         <small class="text-muted">{{ object.comment_set.count }} Comments</small>
         <hr>
