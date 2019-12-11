@@ -4,11 +4,11 @@
 		<article class="media content-section">
 			<div class="media-body">
 				<div class="article-metadata">
-					<a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+					<a class="mr-2" style="word-break: break-all;" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
 					<small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
 				</div>
-				<h2><a class="wrap article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-				<p class="wrap article-content">{{ post.content|wordwrap:110 }}</p>
+				<h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+				<p class="article-content" style="word-break: break-all;">{{ post.content|wordwrap:110 }}</p>
 				<small class="text-muted">{{ post.comment_set.count }} Comments</small>
 			</div>
 		</article>
